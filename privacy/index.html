@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · Adam Wanninger's MCP Servers</title>
+  <meta name="description" content="What Adam Wanninger's hosted MCP servers collect, how they use it, and how long they keep it.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">Adam Wanninger's MCP Servers</a>
+      <nav><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated September 11, 2026</p>
+
+    <p>
+      This policy explains what the hosted MCP servers listed on <a href="/">adamwanninger.com</a>
+      collect, how they use it, where it's kept, and for how long. Adam Wanninger runs these
+      servers as a personal project. The policy covers the hosted servers only. A copy of the code
+      that you run on your own computer sends nothing to me.
+    </p>
+
+    <h2>In short</h2>
+    <ul>
+      <li>
+        When you sign in, Google gives the server your Google account ID and your email address.
+        The email address is used only to check that it's verified, and is never stored.
+      </li>
+      <li>
+        The server stores your Google account ID with the tokens it gives your MCP client. They
+        are deleted no more than 30 days after your client last uses them.
+      </li>
+      <li>Your requests to the tools (which bus, which stop) are answered, not stored.</li>
+      <li>Google Cloud keeps request logs, which include your IP address, for 30 days.</li>
+      <li>
+        Nothing is sold, used for advertising, or shared, apart from Google Cloud, which runs the
+        servers.
+      </li>
+    </ul>
+
+    <h2>What the server receives from Google</h2>
+    <p>
+      To sign you in, the server asks Google for two permissions, <code>openid</code> and
+      <code>email</code>. Together they give the server:
+    </p>
+    <ul>
+      <li>your Google account ID, a number that identifies your account;</li>
+      <li>your email address, and whether Google has verified it.</li>
+    </ul>
+    <p>
+      The server asks for nothing else: not your name, photo, contacts, Gmail, Drive, calendar, or
+      any other data in your Google account. Google sends this information in a signed ID token,
+      which the server checks and then discards. Google also sends an access token for your
+      Google account. The server throws it away without using it and never stores it.
+    </p>
+
+    <h2>How the server uses it</h2>
+    <ul>
+      <li>
+        <strong>Email address:</strong> used only to confirm that Google has verified it; if not,
+        sign-in is refused. For a server open only to certain people, it's also checked against the
+        list of people allowed. It's never stored, and never written to a log.
+      </li>
+      <li>
+        <strong>Google account ID:</strong> linked to the tokens the server gives your MCP client,
+        so the server knows whom they belong to.
+      </li>
+    </ul>
+
+    <h2>What the server stores</h2>
+    <p>
+      The records below are kept in Google Cloud Firestore, in the United States (Google Cloud's
+      us-east1 region, in South Carolina). Each record is filed under a SHA-256 hash of its code or
+      token, so the codes and tokens themselves are never stored.
+    </p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Record</th><th>What it holds</th><th>How long</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Client registration</td>
+            <td>
+              The MCP client app that connects registers itself: its name, the addresses to send
+              you back to after sign-in, and an ID and secret the server generates for it. Nothing
+              about you.
+            </td>
+            <td>90 days after the client last receives tokens</td>
+          </tr>
+          <tr>
+            <td>Sign-in in progress</td>
+            <td>
+              What your MCP client sends to begin signing in: its ID, its return address, a
+              one-time state value and code challenge, and which server you're connecting to. Also
+              a one-time secret the server uses with Google.
+            </td>
+            <td>10 minutes</td>
+          </tr>
+          <tr>
+            <td>Authorization code</td>
+            <td>Your Google account ID, the client's ID, and the sign-in details above</td>
+            <td>60 seconds, and it can be used only once</td>
+          </tr>
+          <tr>
+            <td>Access token</td>
+            <td>
+              Your Google account ID, the client's ID, the permissions granted, which server the
+              token is for, and when it expires
+            </td>
+            <td>1 hour</td>
+          </tr>
+          <tr>
+            <td>Refresh token</td>
+            <td>The same as an access token</td>
+            <td>
+              30 days. Each use replaces it with a new one, so the tokens of a client you stop
+              using are gone within 30 days.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Expired records are ignored at once, and Firestore deletes them automatically, usually within
+      a day.
+    </p>
+
+    <h2>Your requests to the tools</h2>
+    <p>
+      What you ask a tool for, such as a vehicle number, a route, or a stop name, is used to answer
+      you. It isn't stored or logged. To answer, each server fetches public data from its source:
+      CATS MCP reads the Charlotte Area Transit System's public transit feeds. Those requests carry
+      nothing about you.
+    </p>
+
+    <h2>Logs</h2>
+    <ul>
+      <li>
+        Google Cloud Run records each request made to a server: the time, the address requested,
+        the result, how long it took, your IP address, and your MCP client's user agent.
+      </li>
+      <li>
+        The server's own log records failed sign-ins, the Google account ID of any sign-in it
+        refuses, the client ID of each MCP client that completes sign-in, and problems reaching
+        its data sources.
+      </li>
+    </ul>
+    <p>Both are kept in Google Cloud Logging for 30 days and then deleted automatically.</p>
+
+    <h2>Cookies and this website</h2>
+    <p>
+      The servers set no cookies. This website sets none either, and has no analytics or
+      trackers. GitHub Pages hosts it, and may log visitors' IP addresses for security; see
+      <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.
+    </p>
+
+    <h2>Sharing</h2>
+    <p>
+      Your information isn't sold, used for advertising, or shared with anyone. The only exception
+      is that the servers run on Google Cloud (Cloud Run, Firestore, and Cloud Logging), so Google
+      processes this data on my behalf as the hosting provider. I'll disclose information only if
+      the law requires it.
+    </p>
+    <p>
+      Adam Wanninger's MCP Servers' use and transfer of information received from Google APIs
+      adheres to the
+      <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>,
+      including the Limited Use requirements.
+    </p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li>
+        <strong>Stop using a server:</strong> remove it from your MCP client. If your client revokes
+        its tokens as it does so, the server deletes them immediately. Otherwise they expire within
+        30 days.
+      </li>
+      <li>
+        <strong>Remove the app from your Google account:</strong> go to
+        <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a>.
+        This removes the app from your Google account. Because the server holds no Google tokens,
+        its own tokens are unaffected and expire on their own.
+      </li>
+      <li>
+        <strong>Ask for deletion:</strong> email
+        <a href="mailto:deletion@adamwanninger.com">deletion@adamwanninger.com</a>, and I'll delete
+        the records linked to your account. The server doesn't store email addresses, so I can't
+        look you up by email. I'll work with you to find your records, or clear every active
+        sign-in, which signs everyone out. Request logs can't be deleted one by one. They're
+        deleted automatically after 30 days.
+      </li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>The servers aren't directed at children under 13, and don't knowingly collect their information.</p>
+
+    <h2>Changes</h2>
+    <p>
+      If what the servers collect changes, this page changes first, and the date at the top shows
+      when it last did.
+    </p>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:deletion@adamwanninger.com">deletion@adamwanninger.com</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Adam Wanninger's MCP Servers</span>
+      <a href="/privacy/">Privacy policy</a>
+      <a href="/terms/">Terms of service</a>
+      <a href="https://github.com/ajwann/mcp-portfolio">Site source</a>
+    </div>
+  </footer>
+</body>
+</html>

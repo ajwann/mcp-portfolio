@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adam Wanninger's MCP Servers</title>
+  <meta name="description" content="A collection of MCP servers built and run by Adam Wanninger.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">Adam Wanninger's MCP Servers</a>
+      <nav><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Adam Wanninger's MCP Servers</h1>
+    <p class="lede">A collection of MCP servers built and run by Adam Wanninger.</p>
+
+    <p>
+      The <a href="https://modelcontextprotocol.io">Model Context Protocol</a> (MCP) lets an AI
+      assistant such as Claude call tools that live on another server. Each server listed here
+      gives your assistant a small set of tools. Add the server's address to your MCP client, sign
+      in with your Google account, and your assistant can use them.
+    </p>
+
+    <h2>Servers</h2>
+
+    <section class="server" id="cats">
+      <h3>CATS MCP</h3>
+      <p>
+        Live bus and light rail data for the Charlotte Area Transit System (CATS): where a vehicle
+        is right now, and when the next one reaches a stop.
+      </p>
+      <ul>
+        <li><code>find_vehicle</code> finds one bus or train, or every vehicle on a route.</li>
+        <li><code>list_vehicles</code> takes a snapshot of every vehicle's position.</li>
+        <li><code>get_arrivals</code> predicts arrival times at a stop.</li>
+      </ul>
+      <dl>
+        <dt>Address</dt>
+        <dd><code>https://cats.adamwanninger.com/mcp</code></dd>
+        <dt>Source</dt>
+        <dd>
+          <a href="https://github.com/ajwann/cats-mcp">github.com/ajwann/cats-mcp</a>, under the MIT
+          license. It's also on <a href="https://pypi.org/project/cats-mcp/">PyPI</a>, so you can
+          run it on your own computer without signing in.
+        </dd>
+      </dl>
+      <p class="note">
+        Not affiliated with CATS or the City of Charlotte. The data comes from CATS's public
+        transit feeds.
+      </p>
+    </section>
+
+    <h2>Connecting</h2>
+    <p>
+      <strong>Claude:</strong> open Settings, then Connectors, choose <em>Add custom connector</em>,
+      and paste the server's address.
+    </p>
+    <p><strong>Claude Code:</strong> add the server, then run <code>/mcp</code> to sign in.</p>
+    <pre><code>claude mcp add --transport http cats https://cats.adamwanninger.com/mcp</code></pre>
+    <p>Any other MCP client that supports remote servers with OAuth sign-in works the same way.</p>
+
+    <h2>Signing in</h2>
+    <p>
+      The first time your client connects, a browser window asks you to sign in with Google.
+      Google tells the server your account ID and email address. The server checks that the email
+      address is verified, then gives your MCP client an access token of its own.
+    </p>
+    <p>
+      The server never sees your Google password. It gets no access to your Gmail, Drive,
+      contacts, or anything else in your Google account, and it doesn't keep your email address.
+      The <a href="/privacy/">privacy policy</a> has the details.
+    </p>
+
+    <h2>Fine print</h2>
+    <p>
+      These servers are a personal project. They're free to use and come with no guarantee of
+      uptime: any of them may be slow, unavailable, or shut down. Using them means you accept the
+      <a href="/terms/">terms of service</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Adam Wanninger's MCP Servers</span>
+      <a href="/privacy/">Privacy policy</a>
+      <a href="/terms/">Terms of service</a>
+      <a href="https://github.com/ajwann/mcp-portfolio">Site source</a>
+    </div>
+  </footer>
+</body>
+</html>
