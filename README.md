@@ -13,7 +13,7 @@ online and accurate:
 | Terms of service | <https://adamwanninger.com/terms/> |
 
 The hosted servers themselves each live in their own repository, on a subdomain, such as
-`https://cats.adamwanninger.com/mcp` ([ajwann/cats-mcp](https://github.com/ajwann/cats-mcp)).
+`https://queenscoach.adamwanninger.com/mcp` ([ajwann/queenscoach](https://github.com/ajwann/queenscoach)).
 
 ## Layout
 
