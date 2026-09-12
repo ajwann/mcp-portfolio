@@ -59,3 +59,7 @@ the certificate:
 
 Each server's data handling must match its code. Check the privacy policy against the code
 whenever either one changes.
+
+## License
+
+[MIT](LICENSE)
