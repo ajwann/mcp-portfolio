@@ -22,7 +22,8 @@ The hosted servers themselves each live in their own repository, on a subdomain,
 | `index.html` | Home page: what the app is, each server, and how to connect |
 | `privacy/index.html` | Privacy policy |
 | `terms/index.html` | Terms of service |
-| `style.css` | The one stylesheet, with light and dark themes |
+| `tokens.css` | Solarized colour tokens, copied from the landing page; light or dark follows the system setting |
+| `style.css` | The site stylesheet, matching the landing page |
 | `CNAME` | The custom domain GitHub Pages serves |
 | `.nojekyll` | Serve the files as they are, without a Jekyll build |
 
