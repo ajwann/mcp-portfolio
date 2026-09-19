@@ -23,7 +23,7 @@
 
   <main class="wrap">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated September 12, 2026</p>
+    <p class="updated">Last updated September 18, 2026</p>
 
     <p>
       This policy explains what the hosted MCP servers listed on <a href="/">adamwanninger.com</a>
@@ -142,8 +142,16 @@
     <p>
       What you ask a tool for, such as a vehicle number, a route, or a stop name, is used to answer
       you. It isn't stored or logged. To answer, each server fetches public data from its source:
-      QueensCoach reads the Charlotte Area Transit System's public transit feeds. Those requests carry
-      nothing about you.
+      QueensCoach reads the Charlotte Area Transit System's public transit feeds, and those requests
+      carry nothing about you.
+    </p>
+    <p>
+      QueensEstate reads the City of Charlotte Open Data Portal, which is served by ArcGIS layers at
+      <code>gis.charlottenc.gov</code>, <code>meckgis.mecklenburgcountync.gov</code>, and
+      <code>services.arcgis.com</code>. When you ask about a particular place, the address or
+      coordinates you gave are sent to those servers to look it up, because that lookup is how the
+      answer is found. Nothing identifying you is sent with it, and QueensEstate doesn't store or log
+      what you asked about.
     </p>
 
     <h2>Logs</h2>
