@@ -160,6 +160,11 @@ pre code {
     background-color: var(--bg);
 }
 
+/* Keep consecutive server cards from running together. */
+.server + .server {
+    margin-top: 1.5rem;
+}
+
 .server code {
     background-color: var(--bg-alt);
 }
