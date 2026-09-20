@@ -28,7 +28,7 @@
     <p>
       The <a href="https://modelcontextprotocol.io">Model Context Protocol</a> (MCP) lets an AI
       assistant such as Claude call tools that live on another server. Each server listed here
-      gives your assistant a small set of tools. Add the server's address to your MCP client, sign
+      gives your assistant its own set of tools. Add the server's address to your MCP client, sign
       in with your Google account, and your assistant can use them.
     </p>
 
@@ -37,13 +37,17 @@
     <section class="server" id="queenscoach">
       <h3>QueensCoach</h3>
       <p>
-        Live bus and light rail data for the Charlotte Area Transit System (CATS): where a vehicle
-        is right now, and when the next one reaches a stop.
+        Bus and light rail for the Charlotte Area Transit System (CATS): where a vehicle is right
+        now, when the next one reaches a stop, the published timetable, and how to get across town.
       </p>
       <ul>
-        <li><code>find_vehicle</code> finds one bus or train, or every vehicle on a route.</li>
-        <li><code>list_vehicles</code> takes a snapshot of every vehicle's position.</li>
-        <li><code>get_arrivals</code> predicts arrival times at a stop.</li>
+        <li><code>plan_trip</code> plans a trip between two places, with the walking at each end.</li>
+        <li><code>get_arrivals</code> predicts the next arrivals at a stop.</li>
+        <li><code>get_schedule</code> gives the timetable at a stop on any published date.</li>
+        <li><code>get_route</code> describes where a route goes, its stops, and how often it runs.</li>
+        <li><code>get_service_alerts</code> lists detours, closed stops, and suspended service.</li>
+        <li><code>list_stops</code> finds stops and stations and the routes serving them.</li>
+        <li><code>list_vehicles</code> locates buses and trains by number, route, or system-wide.</li>
       </ul>
       <dl>
         <dt>Address</dt>
@@ -70,8 +74,25 @@
       <ul>
         <li><code>get_address_profile</code> gives an address's council member, police division,
           zoning, flood zone, and collection days in one call.</li>
+        <li><code>lookup_address</code> finds an address in the county's master address list.</li>
+        <li><code>find_nearby_places</code> finds the nearest library, park, school, pharmacy, and
+          other public places.</li>
+        <li><code>get_trash_and_recycling_schedule</code> gives an address's collection days.</li>
         <li><code>get_crime_near</code> lists CMPD incidents near a location.</li>
+        <li><code>summarize_crime</code> counts incidents citywide by offense, division, or year.</li>
         <li><code>get_311_requests_near</code> lists 311 service requests near a location.</li>
+        <li><code>get_code_enforcement_cases</code> lists nuisance, housing, and zoning cases.</li>
+        <li><code>get_traffic_crashes_near</code> lists reported crashes and their severity.</li>
+        <li><code>get_street_closures</code> lists CDOT street and lane closures and detours.</li>
+        <li><code>get_capital_projects_near</code> lists city construction projects and their phase.</li>
+        <li><code>get_pending_rezonings</code> lists rezoning petitions in process.</li>
+        <li><code>get_bus_route</code> gives a CATS route's scheduled frequency by time of day.</li>
+        <li><code>get_city_budget</code> breaks a fiscal year down by department, fund, or expense.</li>
+        <li><code>get_city_salary_stats</code> gives pay statistics by department or job title.</li>
+        <li><code>search_datasets</code> searches the portal's catalogue of about 380 datasets.</li>
+        <li><code>describe_dataset</code> shows a dataset's fields, record count, and description.</li>
+        <li><code>query_dataset</code> fetches records from any dataset with a filter.</li>
+        <li><code>summarize_dataset</code> counts or aggregates any dataset, grouped by its fields.</li>
       </ul>
       <dl>
         <dt>Address</dt>
